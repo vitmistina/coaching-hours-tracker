@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import people from "../people-list";
 
 class AddMeeting extends Component {
   nameRef = React.createRef();
@@ -22,7 +23,11 @@ class AddMeeting extends Component {
   render() {
     return (
       <form className="meeting-edit" onSubmit={this.createMeeting}>
-        <input name="name" ref={this.nameRef} placeholder="Name" type="text" />
+        <select name="name" ref={this.nameRef} type="select">
+          {people.map(person => (
+            <option value={person.name}>{person.name}</option>
+          ))}
+        </select>
         <input
           name="date"
           ref={this.dateRef}

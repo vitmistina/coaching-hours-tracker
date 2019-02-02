@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import base, { firebaseApp } from "../base";
+import base from "../base";
+import people from "../people-list";
 
 class EditMeeting extends Component {
   state = {
@@ -37,13 +38,17 @@ class EditMeeting extends Component {
     const { meeting } = this.state;
     return (
       <form className="meeting-edit" onSubmit={this.finishEditing}>
-        <input
+        <select
           name="name"
-          placeholder="Name"
-          type="text"
+          ref={this.nameRef}
           value={meeting.name}
           onChange={this.handleChange}
-        />
+          type="select"
+        >
+          {people.map(person => (
+            <option value={person.name}>{person.name}</option>
+          ))}
+        </select>
         <input
           name="date"
           type="date"
