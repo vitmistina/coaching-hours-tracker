@@ -25,7 +25,9 @@ class AddMeeting extends Component {
       <form className="meeting-edit" onSubmit={this.createMeeting}>
         <select name="name" ref={this.nameRef} type="select">
           {people.map(person => (
-            <option value={person.name}>{person.name}</option>
+            <option value={person.name} key={person.email}>
+              {person.name}
+            </option>
           ))}
         </select>
         <input

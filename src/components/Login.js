@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const loginProviders = ["Google", "Facebook", "LinkedIn"];
+const loginProviders = ["Google", "Facebook"];
 
 const Login = props => (
   <nav className="login">
