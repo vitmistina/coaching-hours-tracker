@@ -1,0 +1,11 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#ea650d",
+    "titleBar.inactiveBackground": "#ea650dcc"
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  }
+}
