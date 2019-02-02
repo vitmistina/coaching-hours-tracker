@@ -234,3 +234,8 @@ h3 {
   background: #320b86;
   color: #fff;
 }
+.meeting-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+}

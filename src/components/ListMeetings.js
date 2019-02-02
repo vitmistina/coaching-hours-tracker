@@ -6,14 +6,18 @@ import ListMeetingsItem from "./ListMeetingsItem";
 const ListMeetings = props => {
   return (
     <div className="meeting-list">
-      {Object.keys(props.meetings).map(key => (
-        <ListMeetingsItem
-          meeting={props.meetings[key]}
-          keyValue={key}
-          key={key}
-          history={props.history}
-        />
-      ))}
+      {Object.keys(props.meetings)
+        .sort((a, b) =>
+          props.meetings[a].date > props.meetings[b].date ? 1 : -1
+        )
+        .map(key => (
+          <ListMeetingsItem
+            meeting={props.meetings[key]}
+            keyValue={key}
+            key={key}
+            history={props.history}
+          />
+        ))}
     </div>
   );
 };

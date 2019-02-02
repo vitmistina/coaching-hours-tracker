@@ -8,13 +8,13 @@ const ListMeetingsItem = props => {
     props.history.push("/meeting/" + props.keyValue);
   };
   return (
-    <div>
+    <React.Fragment>
       <span>{meeting.name}</span>
       <span>{meeting.date}</span>
       <span>{meeting.length}</span>
       <span>{meeting.status}</span>
       <button onClick={navigate}>Edit</button>
-    </div>
+    </React.Fragment>
   );
 };
 
