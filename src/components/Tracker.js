@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import dateFns from "date-fns";
 import { Line } from "react-chartjs-2";
 import TopNavigation from "./TopNavigation";
-import base, { firebaseApp } from "../base";
+import base from "../base";
 
 class Tracker extends Component {
   state = {
