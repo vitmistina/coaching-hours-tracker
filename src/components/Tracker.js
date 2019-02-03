@@ -82,9 +82,11 @@ class Tracker extends Component {
             this.data.datasets[1].data[this.currentDayIndex] +
               "hours to complete"}{" "}
         </div> */}
-        {Object.keys(this.state.meetings).length > 0 && (
-          <Line data={this.fillData} />
-        )}
+        <div className="container">
+          {Object.keys(this.state.meetings).length > 0 && (
+            <Line data={this.fillData} />
+          )}
+        </div>
       </div>
     );
   }
