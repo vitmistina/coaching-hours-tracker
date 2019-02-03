@@ -34,7 +34,7 @@ const people = [
   {
     name: "Cristina Man",
     phone: "748200200",
-    email: "cristina.man@volaris.ro"
+    email: "cristina.man@valoris.ro"
   },
   {
     name: "Helga Kasztl",
