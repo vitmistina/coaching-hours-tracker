@@ -239,3 +239,21 @@ h3 {
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 1rem;
 }
+.balancer.person-card {
+  max-width: 500px;
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 2rem;
+}
+.balancer.person-card .person-details-extended {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+.card {
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.16);
+          box-shadow: 0 1px 1px 0 rgba(60,64,67,0.08), 0 1px 3px 1px rgba(60,64,67,0.16);
+  padding: 1.5rem;
+}
