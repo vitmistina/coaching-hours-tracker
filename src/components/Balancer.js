@@ -35,31 +35,37 @@ class Balancer extends Component {
         <TopNavigation history={this.props.history} />
 
         {Object.keys(this.state.meetings).length > 0 && (
-          <React.Fragment>
+          <div className="balancer-partner-suggestion-grid">
             <h2>Try to arrange sessions with these people</h2>
             {this.orderPersons()
               .slice(-3)
               .map(person => (
-                <div>
+                <React.Fragment>
                   <span>{person.name}</span>
-                  <span>{person.totalMinutes}</span>
-                </div>
+                  <span>{person.totalMinutes / 60} h</span>
+                  <span>
+                    <a href={`mailto:${person.email}`}>{person.email}</a>
+                  </span>
+                  <span>
+                    <a href={`tel:${person.phone}`}>{person.phone}</a>
+                  </span>
+                </React.Fragment>
               ))}
-          </React.Fragment>
+          </div>
         )}
 
         {Object.keys(this.state.meetings).length > 0 && (
-          <React.Fragment>
+          <div className="balancer-top3-grid">
             <h2>Top 3 partners in planned & done</h2>
             {this.orderPersons()
               .slice(0, 3)
               .map(person => (
-                <div>
+                <React.Fragment>
                   <span>{person.name}</span>
-                  <span>{person.totalMinutes}</span>
-                </div>
+                  <span>{person.totalMinutes / 60} h</span>
+                </React.Fragment>
               ))}
-          </React.Fragment>
+          </div>
         )}
       </div>
     );
