@@ -69,11 +69,13 @@ class App extends Component {
       <div>
         <h1 className="primaryD">Coaching hours tracker</h1>
         <TopNavigation history={this.props.history} />
-        <AddMeeting addMeeting={this.addMeeting} />
-        <ListMeetings
-          meetings={this.state.meetings}
-          history={this.props.history}
-        />
+        <div className="container">
+          <AddMeeting addMeeting={this.addMeeting} />
+          <ListMeetings
+            meetings={this.state.meetings}
+            history={this.props.history}
+          />
+        </div>
       </div>
     );
   }
