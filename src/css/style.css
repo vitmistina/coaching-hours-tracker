@@ -234,6 +234,11 @@ h3 {
   background: #320b86;
   color: #fff;
 }
+.meeting-edit .error {
+  color: #b22222;
+  font-weight: bold;
+  font-size: 2.4rem;
+}
 .meeting-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

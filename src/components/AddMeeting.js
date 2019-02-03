@@ -3,13 +3,26 @@ import PropTypes from "prop-types";
 import people from "../people-list";
 
 class AddMeeting extends Component {
+  state = {
+    error: ""
+  };
+
   nameRef = React.createRef();
   dateRef = React.createRef();
   lengthRef = React.createRef();
   statusRef = React.createRef();
 
+  allRefs = [this.nameRef, this.dateRef, this.lengthRef, this.statusRef];
+
+  validateRef = ref => (ref.current.value ? true : false);
+
   createMeeting = event => {
     event.preventDefault();
+    if (!this.allRefs.map(this.validateRef).every(valid => valid)) {
+      this.setState({ error: "You have to fill out every field in the form" });
+      return;
+    }
+    this.setState({ error: "" });
     const meeting = {
       name: this.nameRef.current.value,
       date: this.dateRef.current.value,
@@ -47,6 +60,9 @@ class AddMeeting extends Component {
           <option value="done">Done!</option>
         </select>
         <button type="submit">Add Meeting</button>
+        {this.state.error.length > 0 && (
+          <span className="error">{this.state.error}</span>
+        )}
       </form>
     );
   }
