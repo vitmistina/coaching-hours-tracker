@@ -67,8 +67,9 @@ class EditMeeting extends Component {
           value={meeting.status}
           onChange={this.handleChange}
         >
-          <option value="planned">Planned</option>
-          <option value="done">Done!</option>
+          <option value="planned">Planned 🗓</option>
+          <option value="done">Done ✅</option>
+          <option value="canceled">Cancelled ❌</option>
         </select>
         <button type="submit">Finished editing</button>
       </form>

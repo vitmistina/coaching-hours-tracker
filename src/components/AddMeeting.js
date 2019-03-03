@@ -36,6 +36,7 @@ class AddMeeting extends Component {
   render() {
     return (
       <form className="meeting-edit" onSubmit={this.createMeeting}>
+         <h2>Add a meeting</h2>
         <select name="name" ref={this.nameRef} type="select">
           {people.map(person => (
             <option value={person.name} key={person.email}>
@@ -56,13 +57,15 @@ class AddMeeting extends Component {
           type="number"
         />
         <select name="status" ref={this.statusRef}>
-          <option value="planned">Planned</option>
-          <option value="done">Done!</option>
+          <option value="planned">Planned 🗓</option>
+          <option value="done">Done ✅</option>
+          <option value="canceled">Cancelled ❌</option>
         </select>
         <button type="submit">Add Meeting</button>
         {this.state.error.length > 0 && (
           <span className="error">{this.state.error}</span>
         )}
+        <hr />
       </form>
     );
   }
