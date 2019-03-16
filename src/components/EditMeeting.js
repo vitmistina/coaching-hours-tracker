@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import base from "../base";
 import people from "../people-list";
+import { statusOptions } from "../configs";
 
 class EditMeeting extends Component {
   state = {
@@ -67,9 +68,11 @@ class EditMeeting extends Component {
           value={meeting.status}
           onChange={this.handleChange}
         >
-          <option value="planned">Planned 🗓</option>
-          <option value="done">Done ✅</option>
-          <option value="canceled">Cancelled ❌</option>
+          {Object.keys(statusOptions).map(key => (
+            <option value={key} key={key}>
+              {statusOptions[key]}
+            </option>
+          ))}
         </select>
         <button type="submit">Finished editing</button>
       </form>

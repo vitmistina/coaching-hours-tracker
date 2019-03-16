@@ -1,7 +1,7 @@
 const statusOptions = {
   planned: "Planned 🗓",
   done: "Done ✅",
-  canceled: "Cancelled ❌"
+  cancelled: "Cancelled ❌"
 };
 
 const seasonOptions = {

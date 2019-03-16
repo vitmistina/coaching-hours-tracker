@@ -71,6 +71,7 @@ class Tracker extends Component {
 
   sumHours = date =>
     Object.keys(this.state.meetings)
+      .filter(key => this.state.meetings[key].status != "cancelled")
       .filter(key =>
         dateFns.isWithinRange(
           new Date(this.state.meetings[key].date),

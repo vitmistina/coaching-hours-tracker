@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import people from "../people-list";
+import { statusOptions } from "../configs";
 
 class AddMeeting extends Component {
   state = {
@@ -57,9 +58,11 @@ class AddMeeting extends Component {
           type="number"
         />
         <select name="status" ref={this.statusRef}>
-          <option value="planned">Planned 🗓</option>
-          <option value="done">Done ✅</option>
-          <option value="canceled">Cancelled ❌</option>
+          {Object.keys(statusOptions).map(key => (
+            <option value={key} key={key}>
+              {statusOptions[key]}
+            </option>
+          ))}
         </select>
         <button type="submit">Add Meeting</button>
         {this.state.error.length > 0 && (
