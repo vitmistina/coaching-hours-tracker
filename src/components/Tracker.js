@@ -27,6 +27,10 @@ class Tracker extends Component {
     if (Object.keys(newState).length > 0) this.setState(newState);
   }
 
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
   today = new Date();
   dateDifference = () =>
     dateFns.differenceInDays(

@@ -26,7 +26,7 @@
     "start": "serve --single ./build",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run dev\" \"npm run styles:watch\"",
     "build": "react-scripts build",
-    "netlify-build": "react-scripts build && cp _redirects ./build/_redirects",
+    "build:netlify": "react-scripts build && cp _redirects ./build/_redirects",
     "now-build": "react-scripts build && mv build dist",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",

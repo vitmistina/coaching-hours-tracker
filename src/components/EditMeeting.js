@@ -24,6 +24,10 @@ class EditMeeting extends Component {
     }
   }
 
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
+  }
+
   handleChange = event => {
     const { value, name } = event.currentTarget;
     const typedValue = name === "length" ? parseInt(value, 10) : value;

@@ -54,7 +54,7 @@ class AddMeeting extends Component {
         <input
           name="length"
           ref={this.lengthRef}
-          placeholder="30"
+          defaultValue="60"
           type="number"
         />
         <select name="status" ref={this.statusRef}>
