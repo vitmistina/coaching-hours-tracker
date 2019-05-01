@@ -270,3 +270,21 @@ h3 {
   padding: 0 2rem;
   max-width: 990px;
 }
+.remainingDays {
+  max-width: 500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+}
+.remainingDays.red {
+  background-color: Coral;
+}
+.remainingDays.yellow {
+  background-color: Moccasin;
+}
+.remainingDays.green {
+  background-color: MediumAquamarine;
+}
+.alignRight {
+  text-align: right;
+}

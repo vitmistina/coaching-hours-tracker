@@ -58,9 +58,8 @@ class Tracker extends Component {
 
   data = () => ({
     labels: Array.from(new Array(this.dateDifference()), (val, index) =>
-      dateFns.format(
-        dateFns.addDays(seasonOptions[this.state.season].startDate, index),
-        "ddd DD.MM."
+      this.formatNiceDate(
+        dateFns.addDays(seasonOptions[this.state.season].startDate, index)
       )
     ),
     datasets: [
@@ -72,6 +71,8 @@ class Tracker extends Component {
       }
     ]
   });
+
+  formatNiceDate = date => dateFns.format(date, "ddd DD.MM.");
 
   sumHours = date =>
     Object.keys(this.state.meetings)
@@ -88,6 +89,14 @@ class Tracker extends Component {
         this.totalTargetHours()
       );
 
+  hoursOnDay = date =>
+    Object.keys(this.state.meetings)
+      .filter(key => this.state.meetings[key].status != "cancelled")
+      .filter(key =>
+        dateFns.isSameDay(new Date(this.state.meetings[key].date), date)
+      )
+      .reduce((acc, key) => acc + this.state.meetings[key].length / 60, 0);
+
   addPlanned = () => ({
     label: "Planned & Done",
     fill: true,
@@ -99,6 +108,12 @@ class Tracker extends Component {
     backgroundColor: "#ffca2888"
   });
 
+  getPlannedForRemainingDays = () =>
+    this.remainingDays().map(date => ({
+      hours: this.hoursOnDay(date),
+      date: this.formatNiceDate(date)
+    }));
+
   fillData = () => ({
     ...this.data(),
     datasets: [...this.data().datasets, this.addPlanned()]
@@ -108,6 +123,20 @@ class Tracker extends Component {
     const season = event.target.value;
     localStorage.setItem(`filterSeason`, season);
     this.setState({ season });
+  };
+
+  remainingDays = () => {
+    const daysToGo = this.daysToGo();
+    if (daysToGo <= 0) return [];
+    return Array.from(new Array(daysToGo), (val, index) =>
+      dateFns.addDays(new Date(), index)
+    );
+  };
+
+  computeRemainingDayClass = hours => {
+    if (hours == 0) return "red";
+    if (hours == 1) return "yellow";
+    if (hours >= 2) return "green";
   };
 
   render() {
@@ -134,6 +163,20 @@ class Tracker extends Component {
           {Object.keys(this.state.meetings).length > 0 && (
             <Line data={this.fillData} />
           )}
+          <hr />
+          <h2>Open days</h2>
+          {this.getPlannedForRemainingDays().map(day => (
+            <div
+              key={day.date}
+              className={`remainingDays ${this.computeRemainingDayClass(
+                day.hours
+              )}`}
+            >
+              <span className="alignRight">{day.date}</span>
+              <span />
+              <span>{day.hours}</span>
+            </div>
+          ))}
         </div>
       </div>
     );
